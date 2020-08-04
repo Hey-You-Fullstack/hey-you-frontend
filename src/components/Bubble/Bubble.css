@@ -1,0 +1,83 @@
+div.bubble {
+  margin: 16px;
+  padding: 16px 24px;
+  max-width: 60%;
+  border-radius: 26px;
+  position: relative;
+  box-shadow: 0 0 8px 4px #00000022;
+}
+
+div.bubble.me {
+  color: white;
+  background-color: indianred;
+  align-self: flex-end;
+}
+
+div.bubble.me::before {
+  content: "\00a0";
+  display: block;
+  width: 15px;
+  height: 12px;
+  position: absolute;
+  bottom: 4px;
+  right: 2px;
+  background-color: indianred;
+  box-shadow: -2px 2px 2px 0 #00000022;
+  transform: rotate(250deg) skew(-35deg );
+  -moz-transform: rotate(250deg) skew(-35deg );
+  -ms-transform: rotate(250deg) skew(-35deg );
+  -o-transform: rotate(250deg) skew(-35deg );
+  -webkit-transform: rotate(250deg) skew(-35deg );
+}
+
+div.bubble.you {
+  background-color: whitesmoke;
+  align-self: flex-start;
+}
+
+div.bubble.you::before {
+  content: "\00a0";
+  display: block;
+  width: 15px;
+  height: 12px;
+  position: absolute;
+  bottom: 4px;
+  left: 2px;
+  background-color: whitesmoke;
+  box-shadow: -2px 2px 2px 0 #00000022;
+  transform: rotate(-15deg) skew(-35deg );
+  -moz-transform: rotate(-15deg) skew(-35deg );
+  -ms-transform: rotate(-15deg) skew(-35deg );
+  -o-transform: rotate(-15deg) skew(-35deg );
+  -webkit-transform: rotate(-15deg) skew(-35deg );
+}
+
+div.bubble.us {
+  max-width: 240px;
+  background-color: whitesmoke;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+div.bubble.us::before {
+  content: "\00a0";
+  display: block;
+  width: 15px;
+  height: 12px;
+  position: absolute;
+  bottom: -6px;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  background-color: whitesmoke;
+  box-shadow: -2px 2px 2px 0 #00000022;
+  transform: rotate(297deg) skew(-35deg );
+  -moz-transform: rotate(297deg) skew(-35deg );
+  -ms-transform: rotate(297deg) skew(-35deg );
+  -o-transform: rotate(297deg) skew(-35deg );
+  -webkit-transform: rotate(297deg) skew(-35deg );
+}

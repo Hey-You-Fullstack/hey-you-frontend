@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+  background-attachment: fixed;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  min-width: 300px;
+  font-size: 14px;
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  /* position: -webkit-sticky; Safari */
+  top: 0;
+  z-index: 1;
+}
+
+hr {
+  border: 1px solid gainsboro;
+  width: 100%;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: #CD5C5CF2;
+  box-shadow: 0 0 8px 4px #00000022;
+}
+
+.app-logo {
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.app-title {
+  margin: 4px 0 0;
+  font-size: 10px;
+  font-weight: 500;
+  color: white;
+}
