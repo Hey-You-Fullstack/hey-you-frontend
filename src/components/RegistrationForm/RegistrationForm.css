@@ -30,7 +30,16 @@ button {
   box-shadow: 0 0 8px 4px #00000022;
   background-color: indianred;
   color: white;
-  border-radius: 8px;;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #9e4848;
+}
+
+button:focus {
+  outline: none;
 }
 
 .invalid {
