@@ -1,0 +1,38 @@
+header {
+  width: 100%;
+  position: fixed;
+  /* position: -webkit-sticky; Safari */
+  top: 0;
+  z-index: 1;
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background-color: #cd5c5cf2;
+  box-shadow: 0 0 8px 4px #00000022;
+}
+
+.app-logo {
+  height: 36px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.app-title {
+  margin: 4px 0 0;
+  font-size: 10px;
+  font-weight: 500;
+  color: white;
+}
+
+.progress-bar {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
