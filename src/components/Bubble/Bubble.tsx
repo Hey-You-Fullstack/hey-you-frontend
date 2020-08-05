@@ -1,15 +1,21 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import useIsInViewport from "use-is-in-viewport";
 import "./Bubble.css";
 
 interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
-  from: "me" | "you" | "us";
-  index: number;
+  from?: "me" | "you" | "us";
+  index?: number;
 }
 
-const Bubble: React.FC<BubbleProps> = ({ from, index, children, style }) => {
+const Bubble: React.FC<BubbleProps> = ({ from = "us", index = 0, children, style }) => {
   const [isInViewport, targetRef] = useIsInViewport({ threshold: 50 });
+  const [hasBecomeVisible, setHasBecomeVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (hasBecomeVisible || !isInViewport) return;
+    if (isInViewport) setHasBecomeVisible(true);
+  }, [isInViewport]);
 
   const variants = useMemo(
     () => ({
@@ -23,10 +29,11 @@ const Bubble: React.FC<BubbleProps> = ({ from, index, children, style }) => {
         scale: 1,
         transition: {
           duration: 0.1,
-          delay: 0.25 + 0.25 * index,
+          delay: 0.25 * index,
           type: "spring",
           damping: 4,
           mass: 0.15,
+          // stiffness: 200,
         },
       },
     }),
