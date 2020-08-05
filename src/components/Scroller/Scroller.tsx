@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 import { Bubble, RegistrationForm } from "../";
 import handText from "../../assets/HandText.png";
@@ -77,9 +77,11 @@ const detailElements: BubbleContent[] = [
   },
 ];
 
-const Scroller: React.FC<ScrollerProps> = () => {
+const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
+  void props;
+
   return (
-    <main>
+    <main ref={ref}>
       <section>
         {introElements.map(({ from, content }, index) => (
           <Bubble key={`intro-${index}`} index={index} from={from}>
@@ -87,7 +89,6 @@ const Scroller: React.FC<ScrollerProps> = () => {
           </Bubble>
         ))}
       </section>
-      <hr />
       <section>
         <Bubble index={0} from="us">
           <img src={handText} alt="" />
@@ -96,7 +97,6 @@ const Scroller: React.FC<ScrollerProps> = () => {
           </strong>
         </Bubble>
       </section>
-      <hr />
       <section>
         {detailElements.map(({ from, content }, index) => (
           <Bubble key={`detail-${index}`} index={index} from={from}>
@@ -104,39 +104,10 @@ const Scroller: React.FC<ScrollerProps> = () => {
           </Bubble>
         ))}
       </section>
-      <hr />
-      <section>
-        <RegistrationForm />
-      </section>
-      <hr />
-      <section>
-        <Bubble index={0} from="you">
-          <h3>Frequently Asked Questions</h3>
-          <ul>
-            <li>
-              <a href="#">Why did you make this?</a>
-            </li>
-            <li>
-              <a href="#">Tell me more about [CHARITY]</a>
-            </li>
-            <li>
-              <a href="#">Who made this?</a>
-            </li>
-            <li>
-              <a href="#">What's your privacy policy?</a>
-            </li>
-          </ul>
-        </Bubble>
-        <Bubble index={0} from="me">
-          <h3>100% of proceeds go directly to our partner, [CHARITY]</h3>
-        </Bubble>
-        <Bubble index={0} from="you">
-          Let us know if you have any questions or suggestions at{" "}
-          <a href="mailto:TKTKT@gmail.com">TKTK@gmail.com</a>
-        </Bubble>
-      </section>
+      <RegistrationForm />
+      <FAQ />
     </main>
   );
-};
+});
 
 export default Scroller;

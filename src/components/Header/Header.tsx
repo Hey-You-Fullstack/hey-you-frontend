@@ -4,17 +4,19 @@ import {
   useViewportScroll,
   useSpring,
   useTransform,
+  MotionValue,
 } from "framer-motion";
 
 import logo from "../../assets/Hand.png";
 import "./Header.css";
 
-interface HeaderProps {}
+interface HeaderProps {
+  scrollProgress: MotionValue<number>;
+}
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ scrollProgress }) => {
   const [isComplete, setIsComplete] = useState<boolean>(false);
-  const { scrollYProgress } = useViewportScroll();
-  const yRange = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
+  const yRange = useTransform(scrollProgress, [0, 0.9], [0, 1]);
   const pathLength = useSpring(yRange, { stiffness: 400, damping: 90 });
 
   useEffect(() => yRange.onChange((v) => setIsComplete(v >= 1)), [yRange]);
@@ -31,7 +33,7 @@ const Header: React.FC<HeaderProps> = () => {
         <motion.path
           fill="none"
           strokeWidth="2"
-          stroke={isComplete ? "cornflowerblue" : "white"}
+          stroke={isComplete ? "#3a74e0" : "white"}
           strokeDasharray="0 1"
           d="M 0,0 L 300,0"
           style={{ pathLength }}
