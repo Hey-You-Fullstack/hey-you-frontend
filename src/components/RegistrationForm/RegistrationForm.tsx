@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 import API from "../../api";
 import { Bubble } from "../";
@@ -7,70 +8,46 @@ import "./RegistrationForm.css";
 interface RegistrationFormProps {}
 
 const RegistrationForm: React.FC<RegistrationFormProps> = () => {
-  const [name, setName] = useState<string>("");
-  const [friend, setFriend] = useState<string>("");
-  const [repeat, setReapeat] = useState<number>(1);
-  const [day, setDay] = useState<number>(0);
-  const [time, setTime] = useState<string>("");
-  const [number, setNumber] = useState<string>("");
+  const { handleSubmit, register, errors, setValue } = useForm();
 
-  const handleReset = () => {
-    setName("");
-    setFriend("");
-    setReapeat(1);
-    setDay(0);
-    setTime("");
-    setNumber("");
-  };
-
-  const handleSubmit = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    // TODO: validate fields
-
-    event.preventDefault();
+  // TODO: add form types
+  const onSubmit = async (values: any) => {
+    console.log(values);
     try {
-      const result = await API.post("/user", {
-        name,
-        friend_name: friend,
-        week: repeat,
-        day,
-        time,
-        phone: number,
-      });
-
+      const result = await API.post("/user", { ...values });
       console.log(result);
-      handleReset();
     } catch (e) {
       console.error(e);
     }
   };
 
+  // TODO: labels on inputs should be visible when filled!
   return (
     <Bubble index={0} from="us" style={{ width: "80%" }}>
-      <form>
-        <label htmlFor="name">Name</label>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
-          id="name"
+          name="name"
           type="text"
+          aria-label="Your name"
+          className={errors.name && "invalid"}
           placeholder="What is your name?"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          ref={register({ required: true })}
         />
-        <label htmlFor="friend">Friend</label>
         <input
-          id="friend"
+          name="friend_name"
           type="text"
+          aria-label="Friend's name"
+          className={errors.friend_name && "invalid"}
           placeholder="Who do you want to keep in touch with?"
-          value={friend}
-          onChange={(event) => setFriend(event.target.value)}
+          ref={register({ required: true })}
         />
-        <label htmlFor="repeat">Repeat every</label>
         <select
-          id="repeat"
+          name="week"
+          aria-label="Repeat every"
+          className={errors.week && "invalid"}
           placeholder="Every..."
-          value={repeat}
-          onChange={(event) => setReapeat(parseInt(event.target.value))}
+          ref={register({ required: true })}
+          onChange={(event) => setValue("week", parseInt(event.target.value))}
         >
           <option value={1}>First</option>
           <option value={2}>Second</option>
@@ -79,10 +56,12 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
         </select>
         <label htmlFor="day"></label>
         <select
-          id="day"
+          name="day"
+          aria-label="Day of the week"
+          className={errors.day && "invalid"}
           placeholder="On..."
-          value={day}
-          onChange={(event) => setDay(parseInt(event.target.value))}
+          ref={register({ required: true })}
+          onChange={(event) => setValue("day", parseInt(event.target.value))}
         >
           <option value={0}>Monday</option>
           <option value={1}>Tuesday</option>
@@ -92,23 +71,24 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
           <option value={5}>Saturday</option>
           <option value={6}>Sunday</option>
         </select>
-        <label htmlFor="time">Time</label>
         <input
-          id="time"
+          name="time"
           type="time"
+          aria-label="Call at this time"
+          className={errors.time && "invalid"}
           placeholder="At this time"
-          value={time}
-          onChange={(event) => setTime(event.target.value)}
+          ref={register({ required: true })}
         />
-        <label htmlFor="number">Number</label>
         <input
-          id="number"
+          name="phone"
           type="tel"
+          aria-label="Your phone number"
           placeholder="Great, where do we reach you?"
-          value={number}
-          onChange={(event) => setNumber(event.target.value)}
+          className={errors.phone && "invalid"}
+          minLength={10}
+          ref={register({ validate: (value) => value.length >= 10 })}
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </Bubble>
   );
