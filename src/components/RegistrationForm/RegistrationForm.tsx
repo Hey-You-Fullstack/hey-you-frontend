@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 import API from "../../api";
@@ -41,6 +41,8 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
           placeholder="Who do you want to keep in touch with?"
           ref={register({ required: true })}
         />
+        <div style={{ display: "flex", alignItems:"center", width: "100%" }}>
+          {/* <small>Every</small> */}
         <select
           name="week"
           aria-label="Repeat every"
@@ -54,7 +56,6 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
           <option value={3}>Third</option>
           <option value={4}>Fourth</option>
         </select>
-        <label htmlFor="day"></label>
         <select
           name="day"
           aria-label="Day of the week"
@@ -71,6 +72,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
           <option value={5}>Saturday</option>
           <option value={6}>Sunday</option>
         </select>
+        </div>
         <input
           name="time"
           type="time"
