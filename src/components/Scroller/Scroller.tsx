@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 
-import { Bubble, RegistrationForm } from "../";
+import { Bubble, RegistrationForm, FAQ } from "../";
 import handText from "../../assets/HandText.png";
 import "./Scroller.css";
 
