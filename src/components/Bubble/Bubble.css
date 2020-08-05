@@ -14,7 +14,7 @@ div.bubble.me {
 }
 
 div.bubble.me::before {
-  content: "\00a0";
+  content: "";
   display: block;
   width: 15px;
   height: 12px;
@@ -36,7 +36,7 @@ div.bubble.you {
 }
 
 div.bubble.you::before {
-  content: "\00a0";
+  content: "";
   display: block;
   width: 15px;
   height: 12px;
@@ -53,7 +53,6 @@ div.bubble.you::before {
 }
 
 div.bubble.us {
-  max-width: 240px;
   background-color: whitesmoke;
   align-self: center;
   display: flex;
@@ -63,7 +62,7 @@ div.bubble.us {
 }
 
 div.bubble.us::before {
-  content: "\00a0";
+  content: "";
   display: block;
   width: 15px;
   height: 12px;
@@ -81,3 +80,17 @@ div.bubble.us::before {
   -o-transform: rotate(297deg) skew(-35deg );
   -webkit-transform: rotate(297deg) skew(-35deg );
 }
+
+/* div.bubble.us::before {
+  content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 24px solid transparent;
+	border-top-color: whitesmoke;
+	border-bottom: 0;
+	margin-left: -24px;
+	margin-bottom: -24px;
+} */

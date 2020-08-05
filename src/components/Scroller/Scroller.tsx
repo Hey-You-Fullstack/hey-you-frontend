@@ -1,57 +1,138 @@
 import React from "react";
-import Bubble from "../Bubble/Bubble";
-import "./Scroller.css";
+
+import { Bubble, RegistrationForm } from "../";
 import handText from "../../assets/HandText.png";
+import "./Scroller.css";
 
 interface ScrollerProps {}
 
+type BubbleContent = { from: "you" | "me" | "us"; content: React.ReactNode };
+
+const introElements: BubbleContent[] = [
+  {
+    from: "you",
+    content: (
+      <>
+        We’ve all have that friend: the one we want to stay in touch with, but
+        never quite do.
+      </>
+    ),
+  },
+  {
+    from: "me",
+    content: (
+      <>
+        Oof, yeah. I actually need to text them back{" "}
+        <span role="img" aria-label="woman face-palm">
+          🤦‍♀️
+        </span>
+      </>
+    ),
+  },
+  {
+    from: "you",
+    content: <>Maybe we should be doing more than texting.</>,
+  },
+  {
+    from: "you",
+    content: (
+      <>
+        What if there was a new kind of reminder...one that came with an
+        incentive?
+      </>
+    ),
+  },
+];
+
+const detailElements: BubbleContent[] = [
+  {
+    from: "you",
+    content: (
+      <>
+        It’s easy: pick your person and we’ll remind you to call them once a
+        month.
+      </>
+    ),
+  },
+  { from: "me", content: <>What if I don't feel like it?</> },
+  { from: "you", content: <>Do it if you can. Don’t sweat it if you can’t.</> },
+  {
+    from: "you",
+    content: (
+      <>
+        But to keep you honest,{" "}
+        <strong>
+          every time you skip a call you'll donate a dollar directly to COVID-19
+          recovery efforts
+        </strong>
+        .
+      </>
+    ),
+  },
+  {
+    from: "you",
+    content: (
+      <>Be a good friend, do some good. It's win/win! What do you say?</>
+    ),
+  },
+];
+
 const Scroller: React.FC<ScrollerProps> = () => {
   return (
-    <main className="content-scroller">
-      <section className="content-section">
-        <Bubble from="you">
-          We’ve all have that friend: the one we want to stay in touch with, but
-          never quite do.
-        </Bubble>
-        <Bubble from="me">
-          Oof, yeah. I actually need to text them back{" "}
-          <span role="img" aria-label="woman face-palm">
-            🤦‍♀️
-          </span>
-        </Bubble>
-        <Bubble from="you">Maybe we should be doing more than texting.</Bubble>
-        <Bubble from="you">
-          What if there was a new kind of reminder...one that came with an
-          incentive?
-        </Bubble>
+    <main>
+      <section>
+        {introElements.map(({ from, content }, index) => (
+          <Bubble key={`intro-${index}`} index={index} from={from}>
+            {content}
+          </Bubble>
+        ))}
       </section>
       <hr />
-      <section className="content-section">
-        <Bubble from="us">
+      <section>
+        <Bubble index={0} from="us">
           <img src={handText} alt="" />
-          <strong>A monthly reminder to FaceTime someone important.</strong>
+          <strong style={{ maxWidth: 240 }}>
+            A monthly reminder to FaceTime someone important.
+          </strong>
         </Bubble>
       </section>
       <hr />
-      <section className="content-section">
-        <Bubble from="you">
-          It’s easy: pick your person and we’ll remind you to call them once a
-          month.
+      <section>
+        {detailElements.map(({ from, content }, index) => (
+          <Bubble key={`detail-${index}`} index={index} from={from}>
+            {content}
+          </Bubble>
+        ))}
+      </section>
+      <hr />
+      <section>
+        <RegistrationForm />
+      </section>
+      <hr />
+      <section>
+        <Bubble index={0} from="you">
+          <h3>Frequently Asked Questions</h3>
+          <ul>
+            <li>
+              <a href="#">Why did you make this?</a>
+            </li>
+            <li>
+              <a href="#">Tell me more about [CHARITY]</a>
+            </li>
+            <li>
+              <a href="#">Who made this?</a>
+            </li>
+            <li>
+              <a href="#">What's your privacy policy?</a>
+            </li>
+          </ul>
         </Bubble>
-        <Bubble from="me">What if I don't feel like it?</Bubble>
-        <Bubble from="you">
-          Do it if you can. Don’t sweat it if you can’t.
+        <Bubble index={0} from="me">
+          <h3>100% of proceeds go directly to our partner, [CHARITY]</h3>
         </Bubble>
-        <Bubble from="you">
-          But to keep you honest,{" "}
-          <strong>
-            every time you skip a call you'll donate a dollar directly to
-            COVID-19 recovery efforts
-          </strong>
-          .
-        </Bubble>
-        <Bubble from="you">
-          Be a good friend, do some good. It's win/win! What do you say?
+        <Bubble index={0} from="you">
+          Let us know if you have any questions or suggestions at{" "}
+          <a href="mailto:TKTKT@gmail.com">TKTK@gmail.com</a>
         </Bubble>
       </section>
     </main>

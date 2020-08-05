@@ -1,4 +1,4 @@
-.content-scroller {
+main {
   margin-top: 64px;
   padding: 0 16px;
   flex: 1;
@@ -8,7 +8,8 @@
   scroll-snap-align: start;
 }
 
-.content-section {
+section {
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
