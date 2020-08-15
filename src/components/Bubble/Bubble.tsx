@@ -8,14 +8,20 @@ interface BubbleProps extends React.HTMLAttributes<HTMLDivElement> {
   index?: number;
 }
 
-const Bubble: React.FC<BubbleProps> = ({ from = "us", index = 0, children, style }) => {
+const Bubble: React.FC<BubbleProps> = ({
+  from = "us",
+  index = 0,
+  children,
+  className,
+  style,
+}) => {
   const [isInViewport, targetRef] = useIsInViewport({ threshold: 50 });
   const [hasBecomeVisible, setHasBecomeVisible] = useState<boolean>(false);
 
   useEffect(() => {
     if (hasBecomeVisible || !isInViewport) return;
     if (isInViewport) setHasBecomeVisible(true);
-  }, [isInViewport]);
+  }, [hasBecomeVisible, isInViewport]);
 
   const variants = useMemo(
     () => ({
@@ -44,9 +50,10 @@ const Bubble: React.FC<BubbleProps> = ({ from = "us", index = 0, children, style
     <motion.div
       ref={targetRef}
       initial="hidden"
-      animate={isInViewport ? "visible" : "hidden"}
+      exit="hidden"
+      animate={hasBecomeVisible ? "visible" : "hidden"}
       variants={variants}
-      className={`bubble ${from}`}
+      className={`bubble ${from} ${className}`}
       style={style}
     >
       {children}
