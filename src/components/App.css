@@ -20,6 +20,26 @@ hr {
   width: 100%;
 }
 
+button {
+  border: none;
+  align-self: center;
+  margin: 4px;
+  padding: 8px 48px;
+  box-shadow: 0 0 8px 4px #00000022;
+  background-color: indianred;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #9e4848;
+}
+
+button:focus {
+  outline: none;
+}
+
 .app {
   display: flex;
   flex-direction: column;
