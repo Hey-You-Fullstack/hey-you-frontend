@@ -1,0 +1,23 @@
+.float-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.float-wrapper label {
+  position: absolute;
+  opacity: 0.7;
+  font-size: 14px;
+  pointer-events: none;
+  transform: translate(24px, 28px) scale(1);
+  transform-origin: top left;
+  transition: all 0.1s ease-in-out;
+}
+
+.float-wrapper.active label {
+  transform: translate(24px, 10px) scale(0.66);
+}
+
+.float-wrapper input {
+  width: 100%;
+  padding: 24px;
+}

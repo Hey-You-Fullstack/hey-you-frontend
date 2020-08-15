@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import API from "../../api";
 import { Bubble } from "../";
 import "./RegistrationForm.css";
+import Input from "./Input";
 
 interface RegistrationFormProps {}
 
@@ -23,32 +24,32 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
 
   // TODO: labels on inputs should be visible when filled!
   return (
-    <section>
-      <Bubble index={0} from="us" style={{ width: "100%", margin: "auto" }}>
+    <section className="centered">
+      <Bubble from="us" className="registration-form">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input
+          <Input
             name="name"
             type="text"
             aria-label="Your name"
+            placeholder="Your name"
             className={errors.name && "invalid"}
-            placeholder="What is your name?"
             ref={register({ required: true })}
           />
-          <input
+          <Input
             name="friend_name"
             type="text"
             aria-label="Friend's name"
+            placeholder="Friend's name"
             className={errors.friend_name && "invalid"}
-            placeholder="Who do you want to keep in touch with?"
             ref={register({ required: true })}
           />
-          <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+          <div className="date-select-container">
             {/* <small>Every</small> */}
             <select
               name="week"
               aria-label="Repeat every"
-              className={errors.week && "invalid"}
               placeholder="Every..."
+              className={errors.week && "invalid"}
               ref={register({ required: true })}
               onChange={(event) =>
                 setValue("week", parseInt(event.target.value))
@@ -57,13 +58,13 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               <option value={1}>First</option>
               <option value={2}>Second</option>
               <option value={3}>Third</option>
-              <option value={4}>Fourth</option>
+              <option value={4}>Last</option>
             </select>
             <select
               name="day"
               aria-label="Day of the week"
-              className={errors.day && "invalid"}
               placeholder="On..."
+              className={errors.day && "invalid"}
               ref={register({ required: true })}
               onChange={(event) =>
                 setValue("day", parseInt(event.target.value))
@@ -78,19 +79,20 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               <option value={6}>Sunday</option>
             </select>
           </div>
-          <input
+          <Input
             name="time"
             type="time"
             aria-label="Call at this time"
-            className={errors.time && "invalid"}
             placeholder="At this time"
+            required
+            className={errors.time && "invalid"}
             ref={register({ required: true })}
           />
-          <input
+          <Input
             name="phone"
             type="tel"
             aria-label="Your phone number"
-            placeholder="Great, where do we reach you?"
+            placeholder="Your phone number"
             className={errors.phone && "invalid"}
             minLength={10}
             ref={register({ validate: (value) => value.length >= 10 })}
