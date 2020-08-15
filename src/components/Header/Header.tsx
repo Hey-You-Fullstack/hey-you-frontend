@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  motion,
-  useViewportScroll,
-  useSpring,
-  useTransform,
-  MotionValue,
-} from "framer-motion";
+import { motion, useSpring, useTransform, MotionValue } from "framer-motion";
 
 import logo from "../../assets/Hand.png";
 import "./Header.css";
@@ -33,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({ scrollProgress }) => {
         <motion.path
           fill="none"
           strokeWidth="2"
-          stroke={isComplete ? "#3a74e0" : "white"}
+          stroke={isComplete ? "black" : "white"}
           strokeDasharray="0 1"
           d="M 0,0 L 300,0"
           style={{ pathLength }}

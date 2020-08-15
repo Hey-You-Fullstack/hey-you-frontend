@@ -13,7 +13,7 @@ const introElements: BubbleContent[] = [
     from: "you",
     content: (
       <>
-        We’ve all have that friend: the one we want to stay in touch with, but
+        We all have that friend: the one we want to stay in touch with, but
         never quite do.
       </>
     ),
@@ -82,14 +82,14 @@ const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
 
   return (
     <main ref={ref}>
-      <section>
+      <section className="centered">
         {introElements.map(({ from, content }, index) => (
           <Bubble key={`intro-${index}`} index={index} from={from}>
             {content}
           </Bubble>
         ))}
       </section>
-      <section>
+      <section className="centered">
         <Bubble index={0} from="us">
           <img src={handText} alt="" />
           <strong style={{ maxWidth: 240 }}>
@@ -97,7 +97,7 @@ const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
           </strong>
         </Bubble>
       </section>
-      <section>
+      <section className="centered">
         {detailElements.map(({ from, content }, index) => (
           <Bubble key={`detail-${index}`} index={index} from={from}>
             {content}
