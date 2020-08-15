@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://heyyouserver.herokuapp.com",
+  baseURL: "https://us-central1-heyyou-app.cloudfunctions.net/reminder",
 });
