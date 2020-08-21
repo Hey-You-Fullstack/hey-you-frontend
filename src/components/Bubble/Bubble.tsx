@@ -53,7 +53,7 @@ const Bubble: React.FC<BubbleProps> = ({
       exit="hidden"
       animate={hasBecomeVisible ? "visible" : "hidden"}
       variants={variants}
-      className={`bubble ${from} ${className}`}
+      className={`bubble ${from} ${className ?? ""}`}
       style={style}
     >
       {children}

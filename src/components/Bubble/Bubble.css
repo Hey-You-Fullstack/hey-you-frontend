@@ -11,9 +11,10 @@ div.bubble.me {
   color: white;
   background-color: indianred;
   align-self: flex-end;
+  border-top-right-radius: 6px;
 }
 
-div.bubble.me::before {
+/* div.bubble.me::before {
   content: "";
   display: block;
   width: 15px;
@@ -28,14 +29,15 @@ div.bubble.me::before {
   -ms-transform: rotate(250deg) skew(-35deg );
   -o-transform: rotate(250deg) skew(-35deg );
   -webkit-transform: rotate(250deg) skew(-35deg );
-}
+} */
 
 div.bubble.you {
   background-color: whitesmoke;
   align-self: flex-start;
+  border-top-left-radius: 6px;
 }
 
-div.bubble.you::before {
+/* div.bubble.you::before {
   content: "";
   display: block;
   width: 15px;
@@ -50,7 +52,7 @@ div.bubble.you::before {
   -ms-transform: rotate(-15deg) skew(-35deg );
   -o-transform: rotate(-15deg) skew(-35deg );
   -webkit-transform: rotate(-15deg) skew(-35deg );
-}
+} */
 
 div.bubble.us {
   background-color: whitesmoke;
@@ -61,7 +63,7 @@ div.bubble.us {
   text-align: center;
 }
 
-div.bubble.us::before {
+/* div.bubble.us::before {
   content: "";
   display: block;
   width: 15px;
@@ -79,7 +81,7 @@ div.bubble.us::before {
   -ms-transform: rotate(297deg) skew(-35deg );
   -o-transform: rotate(297deg) skew(-35deg );
   -webkit-transform: rotate(297deg) skew(-35deg );
-}
+} */
 
 /* div.bubble.us::before {
   content: '';
