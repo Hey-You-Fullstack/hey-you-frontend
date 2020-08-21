@@ -90,12 +90,10 @@ const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
         ))}
       </section>
       <section className="centered">
-        <Bubble index={0} from="us">
-          <img src={handText} alt="" />
-          <strong style={{ maxWidth: 240 }}>
-            A monthly reminder to FaceTime someone important.
-          </strong>
-        </Bubble>
+        <img src={handText} alt="" />
+        <strong style={{ maxWidth: 240, paddingTop: 16, textAlign: "center" }}>
+          A monthly reminder to FaceTime someone important.
+        </strong>
       </section>
       <section className="centered">
         {detailElements.map(({ from, content }, index) => (
