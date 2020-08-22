@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import phone from "phone";
 
 import API from "../../api";
 import { Bubble } from "../";
@@ -14,11 +15,19 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
     defaultValues: {},
   });
 
+  const validatePhone = (data: any) => {
+    const [e164Phone, countryCode] = phone(data);
+    return !!e164Phone && countryCode === "USA";
+  };
+
   // TODO: add form types
   const onSubmit = async (values: any) => {
     console.log(values);
     try {
-      const result = await API.post("/create", { ...values });
+      const result = await API.post("/create", {
+        ...values,
+        phone: phone(values.phone)[0],
+      });
       if (result.data.id) {
         reset();
         setDidSubmit(true);
@@ -42,6 +51,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               placeholder="Your name"
               className={errors.name && "invalid"}
               ref={register({ required: true })}
+              required
             />
             <Input
               name="friend_name"
@@ -50,6 +60,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               placeholder="Friend's name"
               className={errors.friend_name && "invalid"}
               ref={register({ required: true })}
+              required
             />
             <div className="date-select-container">
               {/* <small>Every</small> */}
@@ -59,6 +70,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
                 placeholder="Every..."
                 className={errors.week && "invalid"}
                 ref={register({ required: true })}
+                required
                 onChange={(event) =>
                   setValue("week", parseInt(event.target.value))
                 }
@@ -74,6 +86,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
                 placeholder="On..."
                 className={errors.day && "invalid"}
                 ref={register({ required: true })}
+                required
                 onChange={(event) =>
                   setValue("day", parseInt(event.target.value))
                 }
@@ -92,18 +105,18 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               type="time"
               aria-label="Call at this time"
               placeholder="At this time"
-              required
               className={errors.time && "invalid"}
               ref={register({ required: true })}
+              required
             />
             <Input
               name="phone"
               type="tel"
               aria-label="Your phone number"
-              placeholder="Your phone number"
+              placeholder={`Your phone number${errors.phone ? " (must be a valid US phone number)" : ""}`}
               className={errors.phone && "invalid"}
-              minLength={10}
-              ref={register({ validate: (value) => value.length >= 10 })}
+              ref={register({ required: true, validate: validatePhone })}
+              required
             />
             <Input
               name="charity"
