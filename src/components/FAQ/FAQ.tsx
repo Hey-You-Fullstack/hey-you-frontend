@@ -2,15 +2,7 @@ import React, { useState } from "react";
 import { Bubble } from "../";
 import "./FAQ.css";
 
-type QuestionType =
-  | "why"
-  | "who"
-  | "privacy"
-  | "charity1"
-  | "charity2"
-  | "charity3"
-  | "charity4"
-  | "charity5";
+type QuestionType = "why" | "who" | "privacy" | "charity";
 type AnswerType = { question: string; answers: React.ReactNode[] };
 
 const questions: Record<QuestionType, AnswerType> = {
@@ -47,25 +39,23 @@ const questions: Record<QuestionType, AnswerType> = {
       </>,
     ],
   },
-  charity1: {
-    question: "Tell me more about Charity 1",
-    answers: ["The Unlonely Project..."],
-  },
-  charity2: {
-    question: "Tell me more about Charity 2",
-    answers: ["The Unlonely Project..."],
-  },
-  charity3: {
-    question: "Tell me more about Charity 3",
-    answers: ["The Unlonely Project..."],
-  },
-  charity4: {
-    question: "Tell me more about Charity 4",
-    answers: ["The Unlonely Project..."],
-  },
-  charity5: {
-    question: "Tell me more about Charity 5",
-    answers: ["The Unlonely Project..."],
+  charity: {
+    question: "Tell me more about your charities...",
+    answers: [
+      <>
+        <strong>The UnLonely Project</strong> is a charity BLAH BLAH BLAH
+      </>,
+      <>
+        <strong>The Campaign to End Loneliness</strong> is a charity BLAH BLAH
+        BLAH
+      </>,
+      <>
+        <strong>Cost of Loneliness Project</strong> is a charity BLAH BLAH BLAH
+      </>,
+      <>
+        <strong>Reengage</strong> is a charity BLAH BLAH BLAH
+      </>,
+    ],
   },
   privacy: {
     question: "What's your privacy policy?",
@@ -79,74 +69,42 @@ interface FAQProps {}
 
 const FAQ: React.FC<FAQProps> = () => {
   const [openQuestion, setOpenQuestion] = useState<QuestionType | false>(false);
-  const [charity, setCharity] = useState<
-    string | number | Readonly<string[]> | undefined
-  >("charity1");
 
-  const handleQuestionClicked = (
-    event: React.MouseEvent<HTMLElement, MouseEvent>,
-    question: QuestionType | false
-  ) => {
-    event.stopPropagation();
-    setOpenQuestion(question);
-  };
-
-  const handleCharityChanged = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    const {
-      currentTarget: { value },
-    } = event;
-    setCharity(value);
-    setOpenQuestion(value as QuestionType);
-  };
-
-  const showBubblesFor = (response: AnswerType) => (
-    <>
-      <Bubble from="me" key={response.question}>
-        {response.question}
-      </Bubble>
-      {response.answers.map((answer, index) => (
-        <Bubble from="you" index={1} key={`${response.question}-${index}`}>
-          {answer}
+  const showBubblesFor = (question: QuestionType) => {
+    const response = questions[question];
+    return (
+      <>
+        <Bubble from="me" key={response.question}>
+          {response.question}
         </Bubble>
-      ))}
-    </>
-  );
+        {response.answers.map((answer, index) => (
+          <Bubble from="you" index={1} key={`${response.question}-${index}`}>
+            {answer}
+          </Bubble>
+        ))}
+      </>
+    );
+  };
 
   return (
     <section id="faq">
       <Bubble index={0} from="me">
         <h3>Frequently Asked Questions</h3>
         <div className="questions">
-          <button onClick={(event) => handleQuestionClicked(event, "why")}>
+          <button onClick={() => setOpenQuestion("why")}>
             Why did you make this?
           </button>
-          <button onClick={(event) => handleQuestionClicked(event, "who")}>
-            Who made this?
+          <button onClick={() => setOpenQuestion("who")}>Who made this?</button>
+          <button onClick={() => setOpenQuestion("charity")}>
+            Tell me more about your charities
           </button>
-          <button onClick={() => setOpenQuestion(charity as QuestionType)}>
-            Tell me more about{"  "}
-            <select
-              multiple={false}
-              value={charity}
-              placeholder="a charity"
-              onChange={handleCharityChanged}
-            >
-              <option value="charity1">Charity 1</option>
-              <option value="charity2">Charity 2</option>
-              <option value="charity3">Charity 3</option>
-              <option value="charity4">Charity 4</option>
-              <option value="charity5">Charity 5</option>
-            </select>
-          </button>
-          <button onClick={(event) => handleQuestionClicked(event, "privacy")}>
+          <button onClick={() => setOpenQuestion("privacy")}>
             What's your privacy policy?
           </button>
         </div>
       </Bubble>
       {openQuestion ? (
-        showBubblesFor(questions[openQuestion])
+        showBubblesFor(openQuestion)
       ) : (
         <Bubble index={0} from="you">
           <h3>100% of proceeds go directly to our partner, [CHARITY]</h3>
