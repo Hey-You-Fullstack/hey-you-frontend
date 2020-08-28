@@ -46,3 +46,33 @@ button:focus {
   align-items: center;
   height: 100vh;
 }
+
+.scroll-indicator {
+    width: 100%;
+    position: fixed;
+    /* position: -webkit-sticky; Safari */
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    pointer-events: none;
+    font-size: 24px;
+}
+
+.scroll-indicator img {
+  position: relative;
+  animation: 1s infinite alternate oscillate;
+  pointer-events: all;
+}
+
+@keyframes oscillate {
+  from {
+    bottom: 0;
+  }
+
+  to {
+    bottom: 12px;
+  }
+}
