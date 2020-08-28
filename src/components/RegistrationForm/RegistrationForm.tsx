@@ -6,6 +6,16 @@ import API from "../../api";
 import { Bubble } from "../";
 import "./RegistrationForm.css";
 import Input from "./Input";
+import Select from "./Select";
+
+const charities = [
+  { value: "LATER", text: "I'll decide later..." },
+  { value: "UNLONELY", text: "The UnLonely Project" },
+  { value: "CTEL", text: "The Campaign to End Loneliness" },
+  { value: "CLP", text: "Cost of Loneliness Project" },
+  { value: "RE", text: "Reengage" },
+  { value: "OTHER", text: "Other" },
+];
 
 interface RegistrationFormProps {}
 
@@ -103,6 +113,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
             <Input
               name="time"
               type="time"
+              // step={900}
               aria-label="Call at this time"
               placeholder="At this time"
               className={errors.time && "invalid"}
@@ -113,19 +124,21 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               name="phone"
               type="tel"
               aria-label="Your phone number"
-              placeholder={`Your phone number${errors.phone ? " (must be a valid US phone number)" : ""}`}
+              placeholder={`Your phone number${
+                errors.phone ? " (must be a valid US phone number)" : ""
+              }`}
               className={errors.phone && "invalid"}
               ref={register({ required: true, validate: validatePhone })}
               required
             />
-            <Input
+
+            <Select
               name="charity"
-              type="text"
               aria-label="Your chosen charity"
               placeholder="Your charity (optional)"
               className={errors.charity && "invalid"}
-              minLength={2}
               ref={register({ required: false })}
+              options={charities}
             />
             <button type="submit">Submit</button>
           </form>

@@ -21,3 +21,8 @@
   width: 100%;
   padding: 24px;
 }
+
+.float-wrapper select {
+  width: 100%;
+  padding: 24px;
+}
