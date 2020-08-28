@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 
 import { Bubble, RegistrationForm, FAQ } from "../";
-import handText from "../../assets/HandText.png";
+import handText from "../../assets/HeyYou.png";
 import "./Scroller.css";
 
 interface ScrollerProps {}
@@ -11,12 +11,8 @@ type BubbleContent = { from: "you" | "me" | "us"; content: React.ReactNode };
 const introElements: BubbleContent[] = [
   {
     from: "you",
-    content: (
-      <>
-        We all have that friend: the one we want to stay in touch with, but
-        never quite do.
-      </>
-    ),
+    content:
+      "We all have that friend: the one we want to stay in touch with, but never quite do.",
   },
   {
     from: "me",
@@ -31,31 +27,23 @@ const introElements: BubbleContent[] = [
   },
   {
     from: "you",
-    content: <>Maybe we should be doing more than texting.</>,
+    content: "Maybe we should be doing more than texting.",
   },
   {
     from: "you",
-    content: (
-      <>
-        What if there was a new kind of reminder...one that came with an
-        incentive?
-      </>
-    ),
+    content:
+      "What if there was a new kind of reminder...one that came with an incentive?",
   },
 ];
 
 const detailElements: BubbleContent[] = [
   {
     from: "you",
-    content: (
-      <>
-        It’s easy: pick your person and we’ll remind you to call them once a
-        month.
-      </>
-    ),
+    content:
+      "It’s easy: pick your person and we’ll remind you to call them once a month.",
   },
-  { from: "me", content: <>What if I don't feel like it?</> },
-  { from: "you", content: <>Do it if you can. Don’t sweat it if you can’t.</> },
+  { from: "me", content: "What if I don't feel like it?" },
+  { from: "you", content: "Do it if you can. Don’t sweat it if you can’t." },
   {
     from: "you",
     content: (
@@ -71,9 +59,7 @@ const detailElements: BubbleContent[] = [
   },
   {
     from: "you",
-    content: (
-      <>Be a good friend, do some good. It's win/win! What do you say?</>
-    ),
+    content: "Be a good friend, do some good. It's win/win! What do you say?",
   },
 ];
 
@@ -90,7 +76,7 @@ const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
         ))}
       </section>
       <section className="centered">
-        <img src={handText} alt="" />
+        <img src={handText} style={{ height: 300 }} alt="" />
         <strong style={{ maxWidth: 240, paddingTop: 16, textAlign: "center" }}>
           A monthly reminder to FaceTime someone important.
         </strong>
