@@ -6,7 +6,7 @@ interface SelectProps
     React.SelectHTMLAttributes<HTMLSelectElement>,
     HTMLSelectElement
   > {
-  options: { value: string; text: string }[];
+  options: { value: string | number; text: string }[];
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {

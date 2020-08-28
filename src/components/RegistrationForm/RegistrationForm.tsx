@@ -8,13 +8,30 @@ import "./RegistrationForm.css";
 import Input from "./Input";
 import Select from "./Select";
 
-const charities = [
+const charityOptions = [
   { value: "LATER", text: "I'll decide later..." },
   { value: "UNLONELY", text: "The UnLonely Project" },
   { value: "CTEL", text: "The Campaign to End Loneliness" },
   { value: "CLP", text: "Cost of Loneliness Project" },
   { value: "RE", text: "Reengage" },
   { value: "OTHER", text: "Other" },
+];
+
+const weekOptions = [
+  { value: 1, text: "First" },
+  { value: 2, text: "Second" },
+  { value: 3, text: "Third" },
+  { value: 4, text: "Last" },
+];
+
+const dayOptions = [
+  { value: 0, text: "Monday" },
+  { value: 1, text: "Tuesday" },
+  { value: 2, text: "Wednesday" },
+  { value: 3, text: "Thursday" },
+  { value: 4, text: "Friday" },
+  { value: 5, text: "Saturday" },
+  { value: 6, text: "Sunday" },
 ];
 
 interface RegistrationFormProps {}
@@ -74,7 +91,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
             />
             <div className="date-select-container">
               {/* <small>Every</small> */}
-              <select
+              <Select
                 name="week"
                 aria-label="Repeat every"
                 placeholder="Every..."
@@ -84,31 +101,20 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
                 onChange={(event) =>
                   setValue("week", parseInt(event.target.value))
                 }
-              >
-                <option value={1}>First</option>
-                <option value={2}>Second</option>
-                <option value={3}>Third</option>
-                <option value={4}>Last</option>
-              </select>
-              <select
+                options={weekOptions}
+              />
+              <Select
                 name="day"
                 aria-label="Day of the week"
-                placeholder="On..."
+                // placeholder="On..."
                 className={errors.day && "invalid"}
                 ref={register({ required: true })}
                 required
                 onChange={(event) =>
                   setValue("day", parseInt(event.target.value))
                 }
-              >
-                <option value={0}>Monday</option>
-                <option value={1}>Tuesday</option>
-                <option value={2}>Wednesday</option>
-                <option value={3}>Thursday</option>
-                <option value={4}>Friday</option>
-                <option value={5}>Saturday</option>
-                <option value={6}>Sunday</option>
-              </select>
+                options={dayOptions}
+              />
             </div>
             <Input
               name="time"
@@ -135,10 +141,10 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
             <Select
               name="charity"
               aria-label="Your chosen charity"
-              placeholder="Your charity (optional)"
+              placeholder="Your charity"
               className={errors.charity && "invalid"}
               ref={register({ required: false })}
-              options={charities}
+              options={charityOptions}
             />
             <button type="submit">Submit</button>
           </form>

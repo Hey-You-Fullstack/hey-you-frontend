@@ -1,5 +1,7 @@
 div.registration-form {
-  min-width: 90%;
+  /* min-width: 90%; */
+  width: 90%;
+  max-width: 540px;
 }
 
 .registration-form button {
