@@ -2,6 +2,10 @@
   padding-bottom: 200px;
 }
 
+a {
+  color: #3CB3B6;
+}
+
 .questions {
   display: flex;
   align-items: center;

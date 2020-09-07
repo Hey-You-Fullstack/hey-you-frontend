@@ -8,61 +8,60 @@ interface ScrollerProps {}
 
 type BubbleContent = { from: "you" | "me" | "us"; content: React.ReactNode };
 
+/* INITIAL BUBBLES */
 const introElements: BubbleContent[] = [
   {
     from: "you",
     content:
-      "We all have that friend: the one we want to stay in touch with, but never quite do.",
+      "Take the few over followers.",
   },
-  {
-    from: "me",
-    content: (
-      <>
-        Oof, yeah. I actually need to text them back{" "}
-        <span role="img" aria-label="woman face-palm">
-          🤦‍♀️
-        </span>
-      </>
-    ),
-  },
+  
   {
     from: "you",
-    content: "Maybe we should be doing more than texting.",
+    content: "Favor face-to-face over texts.",
   },
+
   {
     from: "you",
     content:
-      "What if there was a new kind of reminder...one that came with an incentive?",
+      "And put real, meaningful connections first.",
   },
+
+  {
+    from: "me",
+    content:
+      <strong>Welcome to the world’s smallest social network.</strong>,
+  },
+
 ];
+
+/* SECONDARY BUBBLES */
 
 const detailElements: BubbleContent[] = [
   {
     from: "you",
     content:
-      "It’s easy: pick your person and we’ll remind you to call them once a month.",
-  },
-  { from: "me", content: "What if I don't feel like it?" },
-  { from: "you", content: "Do it if you can. Don’t sweat it if you can’t." },
-  {
-    from: "you",
-    content: (
-      <>
-        But to keep you honest,{" "}
-        <strong>
-          every time you skip a call you'll donate a dollar directly to COVID-19
-          recovery efforts
-        </strong>
-        .
+    <>
+      <strong>No apps, no downloads</strong>{" "}
+      <br></br>
+      <br></br><span>☝️</span>   Pick one person.
+      <br></br><span>📆</span>   Each month a text will remind you to FaceTime them.
+      <br></br><span>😅</span>   Do it if you can. Don’t sweat it if you can’t.
       </>
-    ),
   },
+
+  { from: "you",
+  content: 
+  <strong>But to keep you honest, every time you skip a call you’ll donate $5 one of our charity partners. 🏥</strong> 
+ },
+
   {
-    from: "you",
-    content: "Be a good friend, do some good. It's win/win! What do you say?",
+    from: "me",
+    content: "Be a good friend, do something good — it's win/win. What do you say?",
   },
 ];
 
+  /* LOGO BUBBLE */
 const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
   void props;
 
@@ -78,7 +77,7 @@ const Scroller = forwardRef<HTMLElement, ScrollerProps>((props, ref) => {
       <section className="centered">
         <img src={handText} style={{ height: 300 }} alt="" />
         <strong style={{ maxWidth: 240, paddingTop: 16, textAlign: "center" }}>
-          A monthly reminder to FaceTime someone important.
+        Connecting you with one friend, once a month.
         </strong>
       </section>
       <section className="centered">

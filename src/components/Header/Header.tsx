@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({ scrollProgress }) => {
         style={{
           height: 4,
           width: `${width}%`,
-          backgroundColor: isComplete ? "black" : "white",
+          backgroundColor: isComplete ? "#102142" : "#3CB3B6",
         }}
       />
     </header>

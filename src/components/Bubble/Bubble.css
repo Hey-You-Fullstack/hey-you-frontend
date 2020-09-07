@@ -9,7 +9,7 @@ div.bubble {
 
 div.bubble.me {
   color: white;
-  background-color: indianred;
+  background-color: #3CB3B6;
   align-self: flex-end;
   border-top-right-radius: 6px;
 }
