@@ -1,31 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bdcc18e04474f969689ba3ccd4296c10",
+    "revision": "94f41bd525895b48479a5866bca1fd1f",
     "url": "/hey-you-frontend/index.html"
   },
   {
-    "revision": "5186746a9db16021a6f6",
-    "url": "/hey-you-frontend/static/css/main.3adf3481.chunk.css"
+    "revision": "6f700643f19cbaa259ce",
+    "url": "/hey-you-frontend/static/css/main.b6bffc87.chunk.css"
   },
   {
-    "revision": "e0647c2af899952c76e7",
-    "url": "/hey-you-frontend/static/js/2.fd64aa6f.chunk.js"
+    "revision": "4e61424f211c1aa8ad0c",
+    "url": "/hey-you-frontend/static/js/2.b8138902.chunk.js"
   },
   {
     "revision": "70d88436874ad6f0b4ff8dc0e5c19c4e",
-    "url": "/hey-you-frontend/static/js/2.fd64aa6f.chunk.js.LICENSE.txt"
+    "url": "/hey-you-frontend/static/js/2.b8138902.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5186746a9db16021a6f6",
-    "url": "/hey-you-frontend/static/js/main.14142832.chunk.js"
+    "revision": "6f700643f19cbaa259ce",
+    "url": "/hey-you-frontend/static/js/main.f564cf10.chunk.js"
   },
   {
     "revision": "61c235706429471e4d4b",
     "url": "/hey-you-frontend/static/js/runtime-main.0d7499a0.js"
   },
   {
-    "revision": "b961a29672f8272864d3d6ea74f2bf89",
-    "url": "/hey-you-frontend/static/media/Hand.b961a296.png"
+    "revision": "5a0d58327e26d2e392cae4cd97dbb4dc",
+    "url": "/hey-you-frontend/static/media/Hand.5a0d5832.png"
   },
   {
     "revision": "ca184cdfd14d399ae81d92736964f551",
