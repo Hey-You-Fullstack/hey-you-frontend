@@ -65,6 +65,7 @@ button:focus {
   position: relative;
   animation: 1s infinite alternate oscillate;
   pointer-events: all;
+  cursor: pointer;
 }
 
 @keyframes oscillate {
