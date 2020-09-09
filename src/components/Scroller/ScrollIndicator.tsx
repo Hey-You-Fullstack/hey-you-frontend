@@ -22,7 +22,7 @@ const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
 
   return (
     <div className="scroll-indicator">
-      {isComplete ? <span>🎉</span> : <img src={caret} height={24} alt="" onClick={handleScroll} />}
+      {isComplete ? <span role="img" aria-label="done!">🎉</span> : <img src={caret} height={24} alt="" onClick={handleScroll} />}
     </div>
   );
 };

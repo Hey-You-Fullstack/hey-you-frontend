@@ -44,15 +44,14 @@ const detailElements: BubbleContent[] = [
     <>
       <strong>No apps, no downloads</strong>{" "}
       <br></br>
-      <br></br><span>☝️</span>   Pick one person.
-      <br></br><span>📆</span>   Each month a text will remind you to FaceTime them.
-      <br></br><span>😅</span>   Do it if you can. Don’t sweat it if you can’t.
+      <br></br><span role="img" aria-label="poninting emoji">☝️</span>   Pick one person.
+      <br></br><span role="img" aria-label="calendar emoji">📆</span>   Each month a text will remind you to FaceTime them.
+      <br></br><span role="img" aria-label="sweating emoji">😅</span>   Do it if you can. Don’t sweat it if you can’t.
       </>
   },
-
   { from: "you",
   content: 
-  <strong>But to keep you honest, every time you skip a call you’ll donate $5 one of our charity partners. 🏥</strong> 
+  <strong>But to keep you honest, every time you skip a call you’ll donate $5 one of our charity partners. <span role="img" aria-label="business emoji">🏥</span></strong> 
  },
 
   {

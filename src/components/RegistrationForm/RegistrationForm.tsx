@@ -94,7 +94,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
               <Select
                 name="week"
                 aria-label="Repeat every"
-                placeholder="Every..."
+                placeholder="I plan to call every..."
                 className={errors.week && "invalid"}
                 ref={register({ required: true })}
                 required
